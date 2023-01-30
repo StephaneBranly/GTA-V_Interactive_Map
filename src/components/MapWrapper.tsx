@@ -150,7 +150,7 @@ const MapWrapper = () => {
         new ImageLayer({
           source: new Static({
             attributions: '© branlyst',
-            url: 'http://192.168.1.12:3000/devina.svg',
+            url: 'vector_map.svg',
             projection: projection,
             imageExtent: extent,
           }),
@@ -159,7 +159,7 @@ const MapWrapper = () => {
         new ImageLayer({
           source: new Static({
             attributions: '© branlyst',
-            url: 'https://www.bragitoff.com/wp-content/uploads/2015/11/GTAV_SATELLITE_2048x2048.png',
+            url: 'satellite_map.png',
             projection: projection,
             imageExtent: [-125, 70, 1093 , 1285],
             imageSize: [2048, 2048],
