@@ -1,18 +1,16 @@
+import 'ol/ol.css';
+
+import { useEffect, useRef, useState } from 'react';
+
 import { Feature, Overlay, View } from 'ol';
-import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import XYZ from 'ol/source/XYZ'
-import * as React from 'react';
-import { useEffect, useRef, useState }
- from 'react';
- import Static from 'ol/source/ImageStatic'
+import Static from 'ol/source/ImageStatic'
 import Map from 'ol/Map';
 import ImageLayer from 'ol/layer/Image';
 import { Projection } from 'ol/proj';
 import { getCenter } from 'ol/extent';
 
-import 'ol/ol.css';
 import { Geometry, Point } from 'ol/geom';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
@@ -24,38 +22,38 @@ import { FeatureLike } from 'ol/Feature';
 
 const MapWrapper = () => {
   const styles: Record<string, Style> = {
-    'Carte': new Style({
+    'Card': new Style({
       image: new Icon({
-        src: 'https://melusine.eu.org/syracuse/postscript/cartes01/01-coeur.png',
-        scale: 0.1,
+        src: './map-icons/card.svg',
+        scale: 0.07,
         anchor: [0.5, 0.5],
       }),
     }),
     'Cinema': new Style({
       image: new Icon({
-        src: 'https://cdn-icons-png.flaticon.com/512/73/73960.png',
-        scale: 0.05,
+        src: './map-icons/cinema.svg',
+        scale: 0.07,
         anchor: [0.5, 0.5],
       }),
     }),
     'Figurine': new Style({
       image: new Icon({
-        src: 'https://cdn-icons-png.flaticon.com/512/809/809144.png',
-        scale: 0.05,
+        src: './map-icons/figurine.svg',
+        scale: 0.07,
         anchor: [0.5, 0.5],
       }),
     }),
-    'Sachet': new Style({
+    'Packet': new Style({
       image: new Icon({
-        src: 'https://cdn-icons-png.flaticon.com/512/2421/2421648.png',
-        scale: 0.05,
+        src: './map-icons/packet.svg',
+        scale: 0.07,
         anchor: [0.5, 0.5],
       }),
     }),
     'Default': new Style({
       image: new Icon({
-        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png',
-        scale: 0.01,
+        src: './map-icons/default_pin.svg',
+        scale: 0.07,
         anchor: [0.5, 0.5],
       }),
     }),
@@ -65,7 +63,6 @@ const MapWrapper = () => {
     const style = feature.get('label');
     return styles[style] || styles['Default'];
   };
-
 
   // set intial state - used to track references to OpenLayers 
   //  objects for use in hooks, event handlers, etc.
@@ -150,7 +147,7 @@ const MapWrapper = () => {
         new ImageLayer({
           source: new Static({
             attributions: '© branlyst',
-            url: 'vector_map.svg',
+            url: './maps/vector_map.svg',
             projection: projection,
             imageExtent: extent,
           }),
@@ -159,7 +156,7 @@ const MapWrapper = () => {
         new ImageLayer({
           source: new Static({
             attributions: '© branlyst',
-            url: 'satellite_map.png',
+            url: './maps/satellite_map.png',
             projection: projection,
             imageExtent: [-125, 70, 1093 , 1285],
             imageSize: [2048, 2048],
