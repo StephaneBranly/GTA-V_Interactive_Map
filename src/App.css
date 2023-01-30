@@ -12,10 +12,13 @@
 .map-wrapper.moving {
   cursor: grabbing;
 }
-.map-wrapper.bg-vec {
+.map-wrapper.bg-vector-light {
   background: #538bc2;
 }
-.map-wrapper.bg-sat {
+.map-wrapper.bg-vector-dark {
+  background: #384950;
+}
+.map-wrapper.bg-satellite {
   background: #143D6B;
 }
 .tooltip {

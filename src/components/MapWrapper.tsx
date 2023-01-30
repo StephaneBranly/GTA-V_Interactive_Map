@@ -19,6 +19,7 @@ import CircleStyle from 'ol/style/Circle';
 import {Control, defaults as defaultControls} from 'ol/control';
 import Icon from 'ol/style/Icon';
 import { FeatureLike } from 'ol/Feature';
+import { AVAILABLE_LAYERS } from '../constants/available_layers';
 
 const MapWrapper = () => {
   const styles: Record<string, Style> = {
@@ -54,7 +55,7 @@ const MapWrapper = () => {
       image: new Icon({
         src: './map-icons/default_pin.svg',
         scale: 0.07,
-        anchor: [0.5, 0.5],
+        anchor: [0.5, 1],
       }),
     }),
   };
@@ -97,7 +98,7 @@ const MapWrapper = () => {
 
   const [overlay, setOverlay] = useState<Overlay>();
 
-  const [activeLayer, setActiveLayer] = useState<string>('vec');
+  const [activeLayer, setActiveLayer] = useState<string>(Object.keys(AVAILABLE_LAYERS)[0]);
 
   const [content, setContent] = useState<string>('');
 
@@ -147,11 +148,20 @@ const MapWrapper = () => {
         new ImageLayer({
           source: new Static({
             attributions: '© branlyst',
-            url: './maps/vector_map.svg',
+            url: './maps/vector_map_light.svg',
             projection: projection,
             imageExtent: extent,
           }),
-          opacity: 1
+          visible: true
+        }),
+        new ImageLayer({
+          source: new Static({
+            attributions: '© branlyst',
+            url: './maps/vector_map_dark.svg',
+            projection: projection,
+            imageExtent: extent,
+          }),
+          visible: false
         }),
         new ImageLayer({
           source: new Static({
@@ -161,7 +171,7 @@ const MapWrapper = () => {
             imageExtent: [-125, 70, 1093 , 1285],
             imageSize: [2048, 2048],
           }),
-          opacity: 0
+          visible: false
         }),
         featuresLayer,
         markersLayer,
@@ -223,16 +233,15 @@ const MapWrapper = () => {
   const handlerSwitchView = () => {
     if (!mapRef.current) return
     const layers = mapRef.current.getLayers();
-    const layerVec = layers.item(0);
-    const layerSat = layers.item(1);
-    if (!layerVec || !layerSat) return
-    const opacityVec = layerVec.getOpacity();
-    const opacitySat = layerSat.getOpacity();
+    const keys = Object.keys(AVAILABLE_LAYERS);
+    const newActiveLayer = keys[(keys.indexOf(activeLayer) + 1) % keys.length];
+    setActiveLayer(newActiveLayer);
 
-    setActiveLayer(activeLayer === 'vec' ? 'sat' : 'vec');
-
-    layerVec.setOpacity(opacitySat);
-    layerSat.setOpacity(opacityVec);
+    keys.forEach((key, index) => {
+      const layer = layers.getArray()[index];
+      layer.setVisible(newActiveLayer === key);
+    }
+    );
   }
 
   const handlerLoadFile = (e: any) => {
