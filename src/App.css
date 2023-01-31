@@ -34,23 +34,40 @@
 }
 
 .switch-view {
-  top: 4em;
+  top: 5em;
   left: .5em;
+  color: white !important;
 }
 
 .load-data {
-  top: 6em;
+  top: 8em;
   left: .5em;
   width: 24px;
   height: 24px;
+  color: white !important;
 }
 
 .coords {
   position: absolute;
   bottom: 1em;
   left: 1em;
-  padding: 5px;
-  background: rgba(0, 0, 0, .8);
-  color: white;
+  color: white !important;
   font: 10pt sans-serif;
+  background: rgba(0, 0, 0, .8);
+  padding: 5px;
+}
+
+
+.ol-control button{ 
+  padding: 5px !important;
+  background: rgba(0, 0, 0, .8) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0px !important;
+  font-size: 20px !important;
+}
+
+.ol-control button:hover{
+  background: rgba(0, 0, 0, .9) !important;
+  border: none !important;
 }
