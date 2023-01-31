@@ -1,0 +1,15 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg" class="si-glyph si-glyph-cross-hair-2" version="1.1">
+ <title>962</title>
+ <g>
+  <title>Layer 1</title>
+  <g stroke-width="20" id="svg_1" fill-rule="evenodd" fill="none">
+   <g id="svg_2">
+    <path stroke="#ffffff" fill="#af00cf" id="svg_3" class="si-glyph-fill" d="m299.47976,365.49877c35.81701,0 64.85253,-31.53098 64.85253,-66.94983c0,-35.41885 -29.03551,-64.13158 -64.85253,-64.13158c-35.81701,0 -64.85253,28.71273 -64.85253,64.13158c0,35.41885 29.03551,66.94983 64.85253,66.94983z"/>
+    <rect stroke="#ffffff" fill="#af00cf" id="svg_4" class="si-glyph-fill" height="131.08141" width="65.08867" y="37.79526" x="267.39759"/>
+    <path stroke="#ffffff" fill="#af00cf" id="svg_5" class="si-glyph-fill" d="m267.39759,431.03947l0,131.1653l65.78058,0l0,-131.1653l-65.78058,0z"/>
+    <rect stroke="#ffffff" fill="#af00cf" id="svg_6" class="si-glyph-fill" height="64.50863" width="130.57337" y="267.18772" x="38.00513"/>
+    <path stroke="#ffffff" fill="#af00cf" id="svg_7" class="si-glyph-fill" d="m431.24934,267.18772l0,63.17665l130.74551,0l0,-63.17665l-130.74551,0z"/>
+   </g>
+  </g>
+ </g>
+</svg>

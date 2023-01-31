@@ -4,8 +4,6 @@ import { Footer } from './components/Footer';
 import { MapWrapper } from './components/MapWrapper';
 import './App.css';
 
-
-
 function App() {
   return (
     <div className="App">

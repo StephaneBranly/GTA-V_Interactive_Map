@@ -72,10 +72,10 @@ const MapWrapper = () => {
   const [ featuresLayer, setFeaturesLayer ] = useState<VectorLayer<VectorSource>>(new VectorLayer({
     source: source,
     style: new Style({
-      image: new CircleStyle({
-        radius: 2,
-        fill: new Fill({color: '#dededede'}),
-        stroke: new Stroke({color: '#de4000', width: 1}),
+      image: new Icon({
+        src: './map-icons/current_position.svg',
+        scale: 0.07,
+        anchor: [0.5, 0.5],
       }),
     }),
   }))
@@ -192,8 +192,14 @@ const MapWrapper = () => {
     mapRef.current.on('click',evt=>{
 
       const newCoords = coordToString(evt.coordinate);
-      setCurrentCoords(newCoords);
-      alert(newCoords)
+      source.clear();
+      const feature = new Feature({
+        geometry: new Point(evt.coordinate),
+        label: 'Current',
+      });
+
+      source.addFeature(feature);
+      // alert(newCoords)
     });
 
     mapRef.current.on('movestart',evt=>{
