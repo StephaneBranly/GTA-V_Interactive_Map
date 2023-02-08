@@ -19,6 +19,7 @@ export const generateIconStyles = () => {
                 scale: value.scale * 1.2,
                 anchor: value.anchor,
             }),
+            zIndex: 100,
         });
         styles[key + "_hover"] = hoverStyle;
     }

@@ -25,7 +25,7 @@
   background: rgba(0, 0, 0, .9);
   color: white;
   font: 10pt sans-serif;
-  max-width: 20vw;
+  max-width: 40vw;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -73,4 +73,47 @@
   position: absolute;
   bottom: 1em;
   right: 1em;
+}
+
+
+.features-control {
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: white;
+  font: 10pt sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.features-control-label {
+  background: rgba(0, 0, 0, .8);
+  padding: 5px;
+  width: min-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.features-control-label:hover {
+  background: rgba(56, 56, 56, 0.9);
+}
+.features-control-label .count {
+  font-weight: bold;
+}
+
+.features-control-label .icon {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.features-control-label.hidden {
+  filter: grayscale(100%);
 }

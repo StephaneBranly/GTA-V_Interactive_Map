@@ -13,6 +13,7 @@ export const generateFeaturesFromCSV = (csv: string) => {
         feature.setProperties({
           label: style,
           description: description,
+          visible: true,
         });
         features.push(feature);
       });

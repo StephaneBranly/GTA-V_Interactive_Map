@@ -8,7 +8,7 @@ import { Feature, Overlay } from 'ol';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import Map from 'ol/Map';
-import { Geometry, Point } from 'ol/geom';
+import { Point } from 'ol/geom';
 import Style, { StyleFunction } from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import { FeatureLike } from 'ol/Feature';
@@ -25,6 +25,7 @@ import LoadFileControl from './controls/LoadFileControl';
 import SwitchLayerControl from './controls/SwitchLayerControl';
 import ZoomControl from './controls/ZoomControl';
 import { useSearchParams } from 'react-router-dom';
+import FeaturesControl from './controls/FeaturesControl';
 
 const MapWrapper = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,6 +34,13 @@ const MapWrapper = () => {
 
   const renderStyle: StyleFunction = (feature: FeatureLike) => {
     const styleToRender = feature.get('label').toLowerCase();
+    const visible = feature.get('visible');
+    if (!visible) return []
+    
+    const hovered = feature.get('hovered');
+    if (hovered) {
+      return styles[styleToRender+'_hover'] || styles['default_hover'];
+    }
     return styles[styleToRender] || styles['default'];
   };
 
@@ -143,6 +151,7 @@ const MapWrapper = () => {
           <ZoomControl mapRef={mapRef} />
           <SwitchLayerControl mapRef={mapRef} activeLayer={activeLayer} setActiveLayer={setActiveLayer} />
           <LoadFileControl mapRef={mapRef} markersSource={markersSource} />
+          <FeaturesControl mapRef={mapRef} markersSource={markersSource} />
           <CoordsControl mapRef={mapRef} coords={currentCoords}  /> 
         </>}
      </div>
