@@ -12,6 +12,15 @@ export const generateIconStyles = () => {
                 anchor: value.anchor,
             }),
         });
+
+        const hoverStyle = new Style({
+            image: new Icon({
+                src: value.src,
+                scale: value.scale * 1.2,
+                anchor: value.anchor,
+            }),
+        });
+        styles[key + "_hover"] = hoverStyle;
     }
     return styles;
 }

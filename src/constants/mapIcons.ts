@@ -5,6 +5,12 @@ export const MAP_ICONS = {
         'scale': 0.07,
         'anchor': [0.5, 0.5],
     },
+    'clue': {
+        'name': 'Clue',
+        'src': './map-icons/clue.svg',
+        'scale': 0.07,
+        'anchor': [0.5, 0.5],
+    },
     'antenna': {
         'name': 'Antenna',
         'src': './map-icons/antenna.svg',
@@ -32,6 +38,12 @@ export const MAP_ICONS = {
     'parachute': {
         'name': 'Parachute',
         'src': './map-icons/parachute.svg',
+        'scale': 0.07,
+        'anchor': [0.5, 0.5],
+    },
+    'usb': {
+        'name': 'USB',
+        'src': './map-icons/usb.svg',
         'scale': 0.07,
         'anchor': [0.5, 0.5],
     },
