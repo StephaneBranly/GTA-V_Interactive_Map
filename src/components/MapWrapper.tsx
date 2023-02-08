@@ -139,11 +139,13 @@ const MapWrapper = () => {
         <div id="tooltip" className="tooltip" ref={tooltipElement}>
           {content}
         </div>
-        <ZoomControl mapRef={mapRef} />
-        <SwitchLayerControl mapRef={mapRef} activeLayer={activeLayer} setActiveLayer={setActiveLayer} />
-        <LoadFileControl mapRef={mapRef} markersSource={markersSource} />
-        <CoordsControl mapRef={mapRef} coords={currentCoords}  /> 
-      </div>
+        {mapRef.current && <>
+          <ZoomControl mapRef={mapRef} />
+          <SwitchLayerControl mapRef={mapRef} activeLayer={activeLayer} setActiveLayer={setActiveLayer} />
+          <LoadFileControl mapRef={mapRef} markersSource={markersSource} />
+          <CoordsControl mapRef={mapRef} coords={currentCoords}  /> 
+        </>}
+     </div>
     )
   };
 

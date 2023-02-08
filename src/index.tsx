@@ -18,6 +18,11 @@ const router = createBrowserRouter([
     element: <App />
     ,
   },
+  {
+    path: "/GTA-V_Interactive_Map",
+    element: <App />
+    ,
+  },
 ]);
 
 root.render(
