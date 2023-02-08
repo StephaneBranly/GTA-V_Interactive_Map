@@ -8,7 +8,7 @@ import { Feature, Overlay } from 'ol';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import Map from 'ol/Map';
-import { Point } from 'ol/geom';
+import { Geometry, Point } from 'ol/geom';
 import Style, { StyleFunction } from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import { FeatureLike } from 'ol/Feature';
@@ -24,8 +24,11 @@ import CoordsControl from './controls/CoordsControl';
 import LoadFileControl from './controls/LoadFileControl';
 import SwitchLayerControl from './controls/SwitchLayerControl';
 import ZoomControl from './controls/ZoomControl';
+import { useSearchParams } from 'react-router-dom';
 
 const MapWrapper = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  
   const styles = generateIconStyles()
 
   const renderStyle: StyleFunction = (feature: FeatureLike) => {
@@ -84,8 +87,19 @@ const MapWrapper = () => {
       controls: [],
     })
 
+    if (searchParams.get('x') && searchParams.get('y')) {
+      const x = Number(searchParams.get('x'));
+      const y = Number(searchParams.get('y'));
+      const feature = new Feature({
+        geometry: new Point([x, y]),
+        label: 'Current',
+      });
+      source.addFeature(feature);
+      mapRef.current.getView().setCenter([x, y]);
+    }
     
     mapRef.current.on('click',evt=>{
+      const evtCoords = evt.coordinate;
       const newCoords = coordToString(evt.coordinate);
       source.clear();
       const feature = new Feature({
@@ -95,6 +109,7 @@ const MapWrapper = () => {
 
       source.addFeature(feature);
       navigator.clipboard.writeText(newCoords)
+      setSearchParams({x: `${Math.round(evtCoords[0])}`, y: `${ Math.round(evtCoords[1])}`})
     });
 
     mapRef.current.on('pointermove',evt=>{
@@ -111,8 +126,9 @@ const MapWrapper = () => {
           }
         }
       });
+      
       setContent(newContent);
-      if (!newContent) {
+      if (newContent.trim() === '') {
         newOverlay?.setPosition(undefined);
       }
     });

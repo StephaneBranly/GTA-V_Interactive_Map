@@ -22,13 +22,12 @@
 .tooltip {
   position: absolute;
   padding: 5px;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, .9);
   color: white;
   font: 10pt sans-serif;
   max-width: 20vw;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 0 5px 5px 5px;
 }
 
 .switch-view {
