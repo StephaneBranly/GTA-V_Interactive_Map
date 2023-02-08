@@ -29,6 +29,12 @@ export const MAP_ICONS = {
         'scale': 0.07,
         'anchor': [0.5, 0.5],
     },
+    'parachute': {
+        'name': 'Parachute',
+        'src': './map-icons/parachute.svg',
+        'scale': 0.07,
+        'anchor': [0.5, 0.5],
+    },
     'default': {
         'name': 'Default',
         'src': './map-icons/default_pin.svg',
